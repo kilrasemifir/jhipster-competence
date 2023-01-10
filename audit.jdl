@@ -1,0 +1,54 @@
+application {
+    config {
+        baseName myapp
+        applicationType monolith
+        buildTool gradle
+        clientFramework react
+        databaseType sql
+    }
+}
+
+entity Person {
+    name String required
+    email String required
+    manager Boolean
+}
+
+entity Skill {
+    name String required
+    description String
+}
+
+entity SkillLevel {
+    value Integer min(0) max(10)
+    skill Skill
+    person Person
+}
+
+entity SkillPrerequisite {
+    skill Skill
+    requiredSkill Skill
+    requiredLevel Integer min(0) max(10)
+}
+
+entity SkillValidation {
+    skill Skill
+    validator Person
+    url String
+    type String
+}
+
+relationship ManyToMany {
+    Person{skills} to Skill{people}
+    Skill{prerequisites} to Skill{requiredSkills}
+}
+
+relationship OneToMany {
+    Skill{validations} to SkillValidation{skill}
+}
+
+paginate Person, Skill, SkillLevel, SkillPrerequisite with infinite-scroll
+
+dto * with mapstruct
+
+service * with serviceClass
