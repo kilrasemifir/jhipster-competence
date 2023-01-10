@@ -419,12 +419,16 @@ This feature ensures that data is not lost in case of hardware or software failu
 ### 3.5 Compliance
 #### __3.5.1 Compliance with legal and regulatory requirements__
 
-The Skill Management Application must comply with all applicable legal and regulatory requirements. The following requirements are established:
+The Skill Management Application must comply with all relevant legal and regulatory requirements. The following requirements are established:
 
-* Data privacy: The system must comply with all applicable data privacy laws, such as GDPR, CCPA, and HIPAA.
-* Data security: The system must comply with all applicable data security laws, such as PCI DSS, HIPAA, and SOX.
-* Data retention: The system must comply with all applicable data retention laws, such as GDPR, CCPA, and HIPAA.
-* Data ownership: The system must comply with all applicable data ownership laws, such as GDPR, CCPA, and HIPAA.
+* Data protection: The system must comply with relevant data protection laws and regulations, such as the General Data Protection Regulation (GDPR) and the California Consumer Privacy Act (CCPA). This includes providing clear and comprehensive privacy notices, obtaining appropriate consents for data processing, and implementing appropriate data security measures.
+* Data retention: The system must comply with relevant data retention laws and regulations, such as the Sarbanes-Oxley Act (SOX) and the Health Insurance Portability and Accountability Act (HIPAA). This includes keeping records for a specified period of time and implementing appropriate data deletion mechanisms.
+* Access control: The system must comply with relevant access control laws and regulations, such as the Federal Risk and Authorization Management Program (FedRAMP) and the Payment Card Industry Data Security Standard (PCI DSS). This includes implementing robust authentication and authorization mechanisms to ensure that only authorized users can access sensitive data.
+
+This part ensures that the system is compliant with all relevant legal and regulatory requirements, reducing the risk of fines, penalties and legal action. It also helps to ensure that sensitive data is protected and that users are only able to access data that they are authorized to access.
 
 ## 4. Conclusion
  
+The Skill Management Application is designed to help companies and organizations manage the skills and proficiency of their team members. This application will enable teams to assign skills to team members, view skills assigned to team members, validate skills, view validation history, add, edit and delete skill levels and skill prerequisites. It will also allow team members to view skills, view team members with a certain level of proficiency for a specific skill, view prerequisites for a skill. The application will also feature a user-friendly interface and be easy to use, with a robust data backup and recovery strategy to ensure that data is not lost in case of hardware or software failures. It will comply with all relevant legal and regulatory requirements to ensure compliance with data protection, data retention and access control laws and regulations. The application will be available with minimal downtime, with the ability to automatically recover from unexpected failures and errors.
+
+Overall, the Skill Management Application aims to improve the efficiency and productivity of teams by providing them with a powerful tool for managing the skills of team members, and ensuring that the sensitive data is protected with compliance with relevant laws and regulations.
