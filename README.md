@@ -16,4 +16,4 @@ For more information, please read the [Software Requirements Specification](./do
 
 ## Installation
 
-For the installation and use of the application, please read the [Installation Guide](./docs/.md).
+For the installation and use of the application, please read the [Installation Guide](./docs/InstallationGuide.md).
