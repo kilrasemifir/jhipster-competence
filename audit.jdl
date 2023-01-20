@@ -8,6 +8,16 @@ application {
     }
 }
 
+application {
+    config {
+        baseName myapp
+        applicationType monolith
+        buildTool gradle
+        clientFramework react
+        databaseType sql
+    }
+}
+
 entity Person {
     name String required
     email String required

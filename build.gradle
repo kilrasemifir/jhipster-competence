@@ -224,7 +224,54 @@ dependencies {
     testImplementation "org.springframework.boot:spring-boot-starter-test"
     testImplementation "org.springframework.boot:spring-boot-test"
     testImplementation "org.springframework.security:spring-security-test"
-    testImplementation "com.tngtech.archunit:archunit-junit5-api:${archunitJunit5Version}"
+    testImplementation "com.tngtech.version: \"3.8\"\n" +
+        "services:\n" +
+        "  influxdb:\n" +
+        "    image: influxdb\n" +
+        "    container_name: influxdb\n" +
+        "    restart: always\n" +
+        "    hostname: influxdb\n" +
+        "    environment:\n" +
+        "      INFLUX_DB: $INFLUX_DB  # nom de la base de données créée à l'initialisation d'InfluxDB\n" +
+        "      INFLUXDB_USER: $INFLUXDB_USER  # nom de l'utilisateur pour gérer cette base de données\n" +
+        "      INFLUXDB_USER_PASSWORD: $INFLUXDB_USER_PASSWORD  # mot de passe de l'utilisateur pour gérer cette base de données\n" +
+        "    volumes:\n" +
+        "      - ./influxdb:/var/lib/influxdb  # volume pour stocker la base de données InfluxDB\n" +
+        "\n" +
+        "  telegraf:\n" +
+        "    image: telegraf\n" +
+        "    depends_on:\n" +
+        "      - influxdb  # indique que le service influxdb est nécessaire\n" +
+        "    container_name: telegraf\n" +
+        "    restart: always\n" +
+        "    links:\n" +
+        "      - influxdb:influxdb\n" +
+        "    tty: true\n" +
+        "    volumes:\n" +
+        "      - /var/run/docker.sock:/var/run/docker.sock  # nécessaire pour remonter les données du démon Docker\n" +
+        "      - ./telegraf/telegraf.conf:/etc/telegraf/telegraf.conf  # fichier de configuration de Telegraf\n" +
+        "\n" +
+        "  grafana:\n" +
+        "    image: grafana/grafana\n" +
+        "    depends_on:\n" +
+        "      - influxdb  # indique que le service influxdb est nécessaire\n" +
+        "    container_name: grafana\n" +
+        "    restart: always\n" +
+        "    ports:\n" +
+        "      - 3000:3000  # port pour accéder à l'interface web de Grafana\n" +
+        "    links:\n" +
+        "      - influxdb:influxdb\n" +
+        "    environment:\n" +
+        "      GF_INSTALL_PLUGINS: \"grafana-clock-panel,\\\n" +
+        "                          grafana-influxdb-08-datasource,\\\n" +
+        "                          grafana-kairosdb-datasource,\\\n" +
+        "                          grafana-piechart-panel,\\\n" +
+        "                          grafana-simple-json-datasource,\\\n" +
+        "                          grafana-worldmap-panel\"\n" +
+        "      GF_SECURITY_ADMIN_USER: $GF_SECURITY_ADMIN_USER  # nom de l'utilisateur créé par défaut pour accéder à Grafana\n" +
+        "      GF_SECURITY_ADMIN_PASSWORD: $GF_SECURITY_ADMIN_PASSWORD  # mot de passe de l'utilisateur créé par défaut pour accéder à Grafana\n" +
+        "    volumes:\n" +
+        "      - ./grafana:/var/lib/grafana:archunit-junit5-api:${archunitJunit5Version}"
     testRuntimeOnly "com.tngtech.archunit:archunit-junit5-engine:${archunitJunit5Version}"
     implementation "org.zalando:problem-spring-web"
     implementation "org.springframework.boot:spring-boot-starter-undertow"
